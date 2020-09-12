@@ -1,0 +1,19 @@
+<table *ngIf="tableFlg">
+    <tr>
+        <th>S.No</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Edit</th>
+    </tr>
+    <tr *ngFor="let emp of employeeList;let indexVal=index;">
+        <td>{{indexVal+1}}</td>
+        <td>{{emp.firstName}}</td>
+        <td>{{emp.lastName}}</td>
+        <td>{{emp.email}}</td>
+        <td (click)="editEmp(emp)">Edit</td>
+    </tr>
+</table>
+<div *ngIf="!tableFlg">
+<p>Edit Employee</p>
+</div>

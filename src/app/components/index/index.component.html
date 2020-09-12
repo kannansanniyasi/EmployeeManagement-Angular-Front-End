@@ -1,0 +1,25 @@
+<div>
+<form name="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <div class="form-group">
+        <label class="labelCss" for="username">Username:</label>
+        <input type="text" class="form-control" maxlength="15" formControlName="username" id="username" placeholder="Enter username">
+        <div class="error"
+             *ngIf="loginForm.controls['username'].hasError('required')
+                && loginForm.controls['username'].touched">Please enter the username</div>
+    </div>
+    <div class="form-group">
+        <label class="labelCss" for="password">Password:</label>
+        <input type="password" class="form-control" maxlength="15" formControlName="password" id="password" placeholder="Enter password">
+        <div class="error"
+        *ngIf="loginForm.controls['password'].hasError('required')
+           && loginForm.controls['password'].touched">Please enter the password</div>
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" name="submit" [disabled]="loginForm.invalid"  class="btn btn-primary" value="Login"/>
+        <div *ngIf="null!=message && message!=''" class="error">
+            <div>Authentication Failed  <span *ngIf="null!=message && message!=''"> : {{message}}</span></div>
+        </div>
+    </div>
+</form>
+</div>
